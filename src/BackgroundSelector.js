@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import background1 from './Backgrounds/Design1.png';
 import background2 from './Backgrounds/Design2.png';
-import './BackgroundSelector.css'; 
+import './BackgroundSelector.css';
+import { useBackgroundContext } from './BackgroundContext';
 
 const BackgroundOption = ({ value, checked, onChange }) => (
   <div className={`background-option ${checked ? 'selected' : ''}`} onClick={() => onChange(value)}>
@@ -11,12 +12,12 @@ const BackgroundOption = ({ value, checked, onChange }) => (
 );
 
 function BackgroundSelector() {
-  const [selectedBackground, setSelectedBackground] = useState(background1);
+  const { selectedBackground, setSelectedBackground } = useBackgroundContext();
   const [title, setTitle] = useState('');
   const navigate = useNavigate();
 
   const handleBackgroundChange = (background) => {
-    setSelectedBackground(background);
+    setSelectedBackground(background); // Store the selected background in the context
   };
 
   const handleTitleChange = (event) => {
@@ -25,39 +26,39 @@ function BackgroundSelector() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigate(`/page?title=${title}&background=${selectedBackground}`);
+    navigate(`/page?title=${title}&background=${selectedBackground}`); // Added backticks to form the correct path
   };
 
   return (
     <div className="page-container">
-    <div className="container">
-      <h1>Welcome!</h1>
-      <p>Please choose the theme you want:</p>
+      <div className="container">
+        <h1>مرحباً</h1>
+        <h3>من فضلك قم باختيار السمة</h3>
 
-      <form onSubmit={handleSubmit}>
-        <div className="background-radio">
-          <BackgroundOption
-            value={background1}
-            checked={selectedBackground === background1}
-            onChange={handleBackgroundChange}
-          />
-          <BackgroundOption
-            value={background2}
-            checked={selectedBackground === background2}
-            onChange={handleBackgroundChange}
-          />
-        </div>
-        <div className='title-block'>
-          <label>
-            Title:
-            <input type="text" value={title} onChange={handleTitleChange} className="title-input" />
-          </label>
-        </div>
-        <div className="button-container">
-          <button type="submit">Save</button>
-        </div>
-      </form>
-    </div>
+        <form onSubmit={handleSubmit}>
+          <div className="background-radio">
+            <BackgroundOption
+              value={background1}
+              checked={selectedBackground === background1}
+              onChange={handleBackgroundChange}
+            />
+            <BackgroundOption
+              value={background2}
+              checked={selectedBackground === background2}
+              onChange={handleBackgroundChange}
+            />
+          </div>
+          <div className="title-block">
+            <label>
+              العنوان
+              <input type="text" value={title} onChange={handleTitleChange} className="title-input" />
+            </label>
+          </div>
+          <div className="button-container">
+            <button type="submit">احفظ</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

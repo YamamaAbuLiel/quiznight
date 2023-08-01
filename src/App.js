@@ -2,27 +2,24 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import BackgroundSelector from './BackgroundSelector';
 import StartPage from './StartPage';
-
+import QuizApp from "./Quizapp"
+import { BackgroundProvider } from './BackgroundContext'; 
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        {/* Other components and content */}
-        <Routes>
-          {/* Route for the BackgroundSelector component */}
-          <Route path="/" element={<BackgroundSelector />} />
-
-          {/* Route for the PageComponent component */}
-          <Route path="/page" element={<StartPage />} />
-
-        </Routes>
-      </div>
+      <BackgroundProvider> {}
+        <div className="App">
+          {}
+          <Routes>
+            <Route path="/" element={<BackgroundSelector />} />
+            <Route path="/page" element={<StartPage />} />
+            <Route path="/quiz" element={<QuizApp />} />
+          </Routes>
+        </div>
+      </BackgroundProvider>
     </Router>
   );
 }
 
 export default App;
-
-
-

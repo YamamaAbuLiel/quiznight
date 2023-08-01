@@ -1,23 +1,30 @@
-
 import React from 'react';
-import { useLocation } from 'react-router-dom';
-import './StartPage.css'; 
+import { useLocation, useNavigate } from 'react-router-dom';
+import './StartPage.css';
+import { useBackgroundContext } from './BackgroundContext';
 
 function StartPage() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const title = queryParams.get('title') || 'Default Title';
-  const selectedBackground = queryParams.get('background') || '';
+  const title = queryParams.get('title') || 'صوت الريادة';
+
+  const { selectedBackground } = useBackgroundContext();
+  const navigate = useNavigate();
+
+  const startQuiz = () => {
+    navigate('/quiz'); // Added quotes around the path
+  };
 
   return (
-    <div className="page-container" style={{ backgroundImage: `url(${selectedBackground})` }}>
+    <div className="page-container" style={{ backgroundImage: `url(${selectedBackground})` }}> {/* Added backticks for template literal */}
       <div className="title-container">
         <h1 className="page-title">{title}</h1>
       </div>
-      <button className="start-button">Start</button>
+      <button className="start-button" onClick={startQuiz}>
+        ابدأ
+      </button>
     </div>
   );
 }
 
 export default StartPage;
-
