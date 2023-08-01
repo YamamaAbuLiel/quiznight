@@ -17,7 +17,7 @@ function BackgroundSelector() {
   const navigate = useNavigate();
 
   const handleBackgroundChange = (background) => {
-    setSelectedBackground(background); // Store the selected background in the context
+    setSelectedBackground(background); 
   };
 
   const handleTitleChange = (event) => {
@@ -26,7 +26,7 @@ function BackgroundSelector() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigate(`/page?title=${title}&background=${selectedBackground}`); // Added backticks to form the correct path
+    navigate(`/page?title=${title}&background=${selectedBackground}`); 
   };
 
   return (
