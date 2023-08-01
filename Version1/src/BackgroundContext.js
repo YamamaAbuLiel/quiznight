@@ -8,7 +8,7 @@ export function useBackgroundContext() {
 
 export function BackgroundProvider({ children }) {
   const defaultBackground = 'linear-gradient(#98b6e2, #ffffff)';
-  const [selectedBackground, setSelectedBackground] = useState(null);
+  const [selectedBackground, setSelectedBackground] = useState(defaultBackground);
 
   return (
     <BackgroundContext.Provider value={{ selectedBackground, setSelectedBackground }}>
