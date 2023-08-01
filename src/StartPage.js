@@ -12,7 +12,7 @@ function StartPage() {
   const navigate = useNavigate();
 
   const startQuiz = () => {
-    navigate('/quiz'); // Added quotes around the path
+    navigate('/quiz'); 
   };
 
   return (
