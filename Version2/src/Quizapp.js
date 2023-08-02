@@ -8,6 +8,7 @@ function QuizApp() {
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [showAnswers, setShowAnswers] = useState(false);
+  const [buttonClicked, setButtonClicked] = useState(false);
   const [answers, setAnswers] = useState(Array(Object.keys(categories).length).fill(null));
 
   const handleAnswer = (answer) => {
@@ -19,8 +20,11 @@ function QuizApp() {
   
     if (!isCorrect) {
       setShowAnswers(true);
+    } else {
+      setButtonClicked(true);
     }
   };
+  
   
   const handleNextQuestion = () => {
     const nextQuestionIndex = currentQuestionIndex + 1;
@@ -32,11 +36,13 @@ function QuizApp() {
         setCurrentQuestionIndex(0);
         setAnswers(Array(Object.keys(categories).length).fill(null)); 
         setShowAnswers(false);
+        setButtonClicked(false);
       }
     } else {
       setCurrentQuestionIndex(nextQuestionIndex);
       setAnswers([...answers.slice(0, currentCategoryIndex), null, ...answers.slice(currentCategoryIndex + 1)]);
       setShowAnswers(false);
+      setButtonClicked(false);
     }
   };
   
@@ -63,8 +69,9 @@ function QuizApp() {
             const isSelected = selectedAnswer === choice;
             const isWrong = isSelected && !isCorrect;
             const isCorrectAnswer = isCorrect && showAnswers;
-            const shouldDisable = showAnswers || (isSelected && !showAnswers); 
-            const className = isWrong ? "wrong-answer" : (isCorrectAnswer ? "correct-answer" : "");
+            const correctAnswerSelected = isCorrect && isSelected;
+            const shouldDisable = showAnswers || isCorrectAnswer || buttonClicked;
+            const className = isWrong ? "wrong-answer" : (isCorrectAnswer ? "correct-answer" : (correctAnswerSelected?"correct-answer":""));
             return (
               <li key={index}>
               <button

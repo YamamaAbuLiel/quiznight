@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import BackgroundSelector from './BackgroundSelector';
 import StartPage from './StartPage';
-import QuizApp from "./Quizapp"
+import QuizApp from "./QuizApp"
 import { BackgroundProvider } from './BackgroundContext'; 
 
 function App() {
