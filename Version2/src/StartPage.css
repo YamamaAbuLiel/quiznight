@@ -1,0 +1,39 @@
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.title-container {
+  background-color: #fff; 
+  padding: 20px;
+  border-radius: 30px; 
+  display: inline-flex; 
+  border: 1px solid black;
+}
+
+.page-title {
+  color: #000; 
+  font-size: 24px;
+  margin: 0;
+}
+
+.start-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.start-button:hover {
+  background-color: #0056b3;
+}
