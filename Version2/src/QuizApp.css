@@ -105,3 +105,14 @@
     text-align: center;
  }
  
+ #foter
+ {
+  display: flex;
+  justify-content: space-around;
+ }
+
+ #foter >button
+ {
+  margin-bottom: 30px;
+
+ }
