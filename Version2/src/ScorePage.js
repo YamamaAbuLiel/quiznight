@@ -10,7 +10,7 @@ const ScorePage = ({ score }) => {
 
   return (
     <div className=" page-container score-page" style={{ backgroundImage: `url(${selectedBackground})` }}>
-      <h1>Your Score: {score}</h1>
+      <h1>المجموع: {score}</h1>
     </div>
   );
 };

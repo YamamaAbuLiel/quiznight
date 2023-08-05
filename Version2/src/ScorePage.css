@@ -18,12 +18,12 @@
 
   @keyframes pulseAnimation {
     0% {
-      color: black; /* Starting color (black) */
+      color: black; 
     }
     50% {
-      color: green; /* Middle color (you can change it to any other color you want) */
+      color: green; 
     }
     100% {
-      color: black; /* Ending color (back to black) */
+      color: black; 
     }
   }
