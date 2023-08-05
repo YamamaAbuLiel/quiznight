@@ -1,0 +1,29 @@
+
+.score-page {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+}
+
+
+.score-page h1 {
+    font-size: 5rem;
+    color: black;
+    animation: pulseAnimation 2s linear infinite;  
+}
+
+
+  @keyframes pulseAnimation {
+    0% {
+      color: black; /* Starting color (black) */
+    }
+    50% {
+      color: green; /* Middle color (you can change it to any other color you want) */
+    }
+    100% {
+      color: black; /* Ending color (back to black) */
+    }
+  }
