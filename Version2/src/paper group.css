@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Dai+Banna+SIL:wght@300&family=Harmattan&family=Montserrat+Alternates:wght@100;400&family=Noto+Naskh+Arabic&family=Philosopher:wght@400;700&display=swap');
+.page-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .question-container {
+    padding-right: 40px;
+    border-radius: 10px;
+    max-width: 600px;
+    padding-left: 50px;
+    
+  }
+  
+  .choices-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+  
+  .choices-grid li {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .choices-grid button {
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    background-color:rgb(194, 192, 192);
+    border-radius: 5px;
+    cursor: pointer;
+    width:200px;
+    
+    
+  }
+  
+  .choices-grid button:hover {
+    background-color: #e0e0e0;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .question-container h1
+  {
+    text-align: center;
+    background-color: white;
+    border-radius: 30px;
+    border: 1px solid black;
+  }
+
+  div{
+    direction: rtl;
+    font-family: 'Harmattan', sans-serif;
+
+  }
+
+  button
+  {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Harmattan', sans-serif;
+
+  }
+  button:hover
+  {
+    background-color: #0056b3;
+
+  }
+  .correct ul li
+  {
+    font-size: 20px;
+    font-family: 'Noto Naskh Arabic', serif; 
+    list-style-type: circle;
+
+ }
+
+ h3
+ {
+    text-align: center;
+ }
+ 
