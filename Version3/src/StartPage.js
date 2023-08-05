@@ -12,7 +12,7 @@ function StartPage() {
   const navigate = useNavigate();
 
   const startQuiz = () => {
-    navigate('/quiz'); 
+    navigate('/'); 
   };
 
   return (
