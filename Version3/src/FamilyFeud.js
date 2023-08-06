@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { getFamilyFeudData } from './Questions';
 import './FamilyFeud.css'; 
@@ -18,13 +17,6 @@ function QuestionBar({ onLeftScoreChange, onRightScoreChange }) {
         const newState = [...prevState];
         newState[index] = true;
 
-        const answerMark = answers[index].mark;
-        if (index % 2 === 0) {
-          onLeftScoreChange(answerMark);
-        } else {
-          onRightScoreChange(answerMark);
-        }
-
         return newState;
       });
     }
@@ -37,14 +29,30 @@ function QuestionBar({ onLeftScoreChange, onRightScoreChange }) {
     }, 2000);
   };
 
+  const handleGivePointsToLeft = (index) => {
+    if (revealedAnswers[index]) {
+      const answerMark = answers[index].mark;
+      onLeftScoreChange(answerMark);
+    }
+  };
+
+  const handleGivePointsToRight = (index) => {
+    if (revealedAnswers[index]) {
+      const answerMark = answers[index].mark;
+      onRightScoreChange(answerMark);
+    }
+  };
+
   const handleNextQuestion = () => {
     setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % familyFeudData.length);
     setRevealedAnswers(Array(answers.length).fill(false));
   };
 
+  const isLastQuestion = currentQuestionIndex === familyFeudData.length - 1;
+
   return (
     <div className="question-bar">
-      <h2>{currentQuestion}</h2>
+      <h2 id="Questionh">{currentQuestion}</h2>
       <div className="answer-box">
         {answers.map((answer, index) => (
           <div
@@ -53,6 +61,14 @@ function QuestionBar({ onLeftScoreChange, onRightScoreChange }) {
             onClick={() => handleAnswerClick(index)}
           >
             {revealedAnswers[index] ? answer.answer : 'اضغط لإظهار الجواب'}
+            <div className="score-buttons">
+              <button onClick={() => handleGivePointsToLeft(index)} disabled={!revealedAnswers[index]}>
+                إعطاء النقاط للفريق الأول
+              </button>
+              <button onClick={() => handleGivePointsToRight(index)} disabled={!revealedAnswers[index]}>
+                إعطاء النقاط للفريق الثاني
+              </button>
+            </div>
           </div>
         ))}
         {wrongAnswer && <div className="answer wrong-answer">X</div>}
@@ -60,15 +76,23 @@ function QuestionBar({ onLeftScoreChange, onRightScoreChange }) {
       <button onClick={handleWrongAnswer} className="wrong-answer-button">
         جواب خاطئ
       </button>
-      <button onClick={handleNextQuestion} className='next-button'>السؤال التالي</button>
+      {isLastQuestion ? (
+        <button className="next-button" >
+          انتهت الأسئلة
+        </button>
+      ) : (
+        <button onClick={handleNextQuestion} className="next-button">
+          السؤال التالي
+        </button>
+      )}
     </div>
   );
 }
 
-
 function FamilyFeud() {
   const [leftScore, setLeftScore] = useState(0);
   const [rightScore, setRightScore] = useState(0);
+ 
 
   const handleLeftScoreChange = (value) => {
     setLeftScore(leftScore + value);
@@ -97,6 +121,5 @@ function FamilyFeud() {
     </div>
   );
 }
-
 
 export default FamilyFeud;
