@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { getFamilyFeudData } from './Questions';
+import { useBackgroundContext } from './BackgroundContext';
 import './FamilyFeud.css'; 
 
 function QuestionBar({ onLeftScoreChange, onRightScoreChange }) {
+  const { selectedBackground } = useBackgroundContext();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const familyFeudData = getFamilyFeudData();
   const currentQuestion = familyFeudData[currentQuestionIndex].question;
@@ -51,6 +53,7 @@ function QuestionBar({ onLeftScoreChange, onRightScoreChange }) {
   const isLastQuestion = currentQuestionIndex === familyFeudData.length - 1;
 
   return (
+    <div className="page-container" style={{ backgroundImage: `url(${selectedBackground})` }}>
     <div className="question-bar">
       <h2 id="Questionh">{currentQuestion}</h2>
       <div className="answer-box">
@@ -85,6 +88,7 @@ function QuestionBar({ onLeftScoreChange, onRightScoreChange }) {
           السؤال التالي
         </button>
       )}
+    </div>
     </div>
   );
 }

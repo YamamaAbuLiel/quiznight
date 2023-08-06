@@ -1,10 +1,15 @@
-
+.page-container {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .question-bar {
     text-align: center;
     padding: 20px;
     background-color: #f0f0f0;
     border-bottom: 2px solid #ccc;
     margin-top: 80px;
+    width: 40%;
   }
   
   .question-bar h2 {
@@ -88,14 +93,6 @@
     background-color: #cc0000;
   }
   
-
-.family-feud-container {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    position: relative;
-    background-color:#f0f0f0 ;
-  }
   
   .scoreboard {
     border: 1px solid #ccc;
@@ -124,8 +121,7 @@
   }
   .score-buttons >button
   {
-    display: inline-block;
-    
+    display: inline-block; 
     justify-content: space-between;
     margin-left: 10px;
    

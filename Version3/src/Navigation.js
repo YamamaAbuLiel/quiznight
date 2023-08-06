@@ -10,10 +10,10 @@
 
     return (
       <div className="Cont page-container" style={{ backgroundImage: `url(${selectedBackground})` }}>
-        <button> <Link to="/back">اختيار السمة</Link></button>
-        <button><Link to="/paper">paper group</Link>        </button>
-        <button><Link to="/quiz">من سيربح المليون؟</Link></button>
-        <button><Link to="/family-feud">صراع العائلات</Link></button>
+        <button> <Link to="/back" className="link-style">تغيير الخلفية</Link></button>
+        <button><Link to="/paper" className="link-style">اسئلة ورقية</Link></button>
+        <button><Link to="/quiz" className="link-style">من سيربح المليون؟</Link></button>
+        <button><Link to="/family-feud" className="link-style">صراع العائلات</Link></button>
        
       </div>
     );
